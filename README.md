@@ -1,2 +1,2 @@
 <h1> First Node Application </h1>
-Utilisation de node.js pour émuler un serveur HTTP.
+Première mise en main de node.js avec les modules Express et socket.io.
