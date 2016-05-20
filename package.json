@@ -1,11 +1,39 @@
 {
-	"name": "nodul",
-	"version": "0.1.0",
-	"author": "Kafei59 <pierrick.gicquelais@epitech.eu>",
-	"description": "A simple first test application launched with Express and socket.io",
-	"dependencies": {
-		"express": "~4.10.6",
-		"socket.io": "~1.2.1",
-		"mysql": "~2.5.4"
-	}
+  "name": "nodul",
+  "version": "0.0.0",
+  "description": "Streaming and broadcasting Youtube playlist",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kafei59/nodul.git"
+  },
+  "keywords": [
+    "nodul",
+    "streaming",
+    "braodcast",
+    "youtube",
+    "playlist",
+    "music"
+  ],
+  "author": "Pierrick Gicquelais",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Kafei59/nodul/issues"
+  },
+  "dependencies": {
+    "ejs": "~1.0.0",
+    "express": "~4.9.8",
+    "body-parser": "~1.15.1",
+    "request": "~2.72.0",
+    "mongoose": "~4.4.17",
+    "morgan": "~1.7.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  }
 }
