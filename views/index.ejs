@@ -10,7 +10,9 @@
         <div class="container">
             <div class="jumbotron">
                 <h1>Welcome to Nodul: <%=title%></h1>
-                <p><%=user%></p>
+                <p>
+                    <%= typeof user != 'undefined' ? user : '' %>
+                </p>
             </div>
         </div>
     </body>
