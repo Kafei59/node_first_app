@@ -1,6 +1,7 @@
 # Projets specifications #
 #########################
 node_modules
+config/parameters.env
 
 # Compiled source #
 ###################
