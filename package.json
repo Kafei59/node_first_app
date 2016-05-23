@@ -1,6 +1,6 @@
 {
   "name": "nodul",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Streaming and broadcasting Youtube playlist",
   "main": "app.js",
   "scripts": {
@@ -34,7 +34,9 @@
     "connect-mongo": "~1.2.0",
     "express-session": "~1.13.0",
     "express-flash": "0.0.2",
-    "passport-local": "~1.0.0"
+    "passport-local": "~1.0.0",
+    "dotenv": "~2.0.0",
+    "bcryptjs": "~2.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
