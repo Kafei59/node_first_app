@@ -2,7 +2,7 @@
 * @Author: Kafei59
 * @Date:   2016-05-20 11:37:33
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-05-23 17:04:31
+* @Last Modified time: 2016-05-24 10:22:39
 */
 
 const express = require('express');
@@ -16,14 +16,16 @@ const morgan = require('morgan');
 const passport = require('passport');
 const dotenv = require('dotenv').config({path: './config/parameters.env'});
 
-module.exports = function(app) {
+function setupMongoose(app) {
     mongoose.connect(process.env.MONGODB_URL);
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
         console.log('connection done');
     });
+};
 
+function setupExpress(app) {
     app.set('port', (process.env.PORT));
     app.set('view engine', 'ejs');
     app.use(express.static(__dirname + process.env.PUBLIC_FOLDER));
@@ -44,37 +46,13 @@ module.exports = function(app) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
+};
+
+module.exports = function(app) {
+    setupMongoose(app);
+    setupExpress(app);
 
     app.listen(app.get('port'), function() {
         console.log('Our app is running on port: ' + app.get('port'));
     });
 };
-
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
-});
-
-passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
-    User.findOne({ username: username }, function (err, user) {
-        if (!user) {
-            return done(null, false, { msg: `Username ${username} not found.` });
-        }
-
-        user.comparePassword(password, function (err, isMatch) {
-            if (isMatch) {
-                return done(null, user);
-            }
-
-            return done(null, false, { msg: 'Invalid username or password.' });
-        });
-    });
-}));

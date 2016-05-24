@@ -2,11 +2,12 @@
 * @Author: Kafei59
 * @Date:   2016-05-22 11:53:48
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-05-23 16:30:55
+* @Last Modified time: 2016-05-24 10:16:29
 */
 
 const passport = require('passport');
 const User = require('../models/user');
+const UserService = require('../services/user');
 
 /**
  * GET /login
@@ -89,15 +90,9 @@ module.exports.postSignUp = function(req, res, next) {
                 req.flash('errors', { msg: 'Account with that email address already exists.' });
                 res.redirect('/signup');
             } else {
-                const user = new User({
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: req.body.password
-                });
-
-                user.save(function(err) {
+                UserService.create(req.body.username, req.body.email, req.body.password, function(err, user) {
                     if (err) {
-                        return next(err);
+                        next(err);
                     } else {
                         req.logIn(user, function(err) {
                             if (err) {
