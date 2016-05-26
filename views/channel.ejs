@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Node Sample App</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Welcome to Nodul: <%=title%></h1>
+                <h3>Channel Form</h3>
+                <p>
+                    <%= typeof messages.errors != 'undefined' ? messages.errors[0].msg : '' %>
+                </p>
+
+                <form method="post">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" required>
+
+                    <label for="description">Description</label>
+                    <input type="text" name="description" required>
+
+                    <input type='hidden' name='_csrf' value=_csrf>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

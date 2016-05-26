@@ -2,7 +2,7 @@
 * @Author: Kafei59
 * @Date:   2016-05-22 11:53:48
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-05-24 10:16:29
+* @Last Modified time: 2016-05-25 12:22:53
 */
 
 const passport = require('passport');
@@ -54,7 +54,6 @@ module.exports.postLogin = function(req, res, next) {
             }
         })(req, res, next);
     }
-
 }
 
 /**
